@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap");
+
+html[data-theme="light"] {
+  --pst-color-primary: #3b6fd8;
+  --pst-color-secondary: #3b6fd8;
+  --pst-color-link: #3b6fd8;
+  --pst-color-link-hover: #2b57b0;
+  --pst-font-family-base: "Geist", system-ui, sans-serif;
+  --pst-font-family-heading: "Geist", system-ui, sans-serif;
+}
+
+html[data-theme="dark"] {
+  --pst-color-primary: #8fb0f2;
+  --pst-color-secondary: #8fb0f2;
+  --pst-color-link: #8fb0f2;
+}
+
+.bd-header { border-bottom: 1px solid #e5e1dc; box-shadow: none; }
+
+html[data-theme="light"] body { background: #fff; }
+.navbar-brand .logo__title { font-weight: 600; letter-spacing: -.01em; }
+
+html.embedded { --pst-header-height: 0px; }
+html.embedded .bd-header { display: none; }
+html.embedded .bd-sidebar-primary, html.embedded .bd-sidebar-secondary { top: 0; height: 100vh; }
+
+/* Inside the site the sidebar has a fixed, modest width, expanded or collapsed, at any window width. */
+html.embedded .bd-sidebar-primary { --pst-sidebar-primary-width: min(18rem, 28%); width: var(--pst-sidebar-primary-width); flex: 0 0 var(--pst-sidebar-primary-width); }
+html.embedded .bd-sidebar-primary.pst-squeeze { --pst-sidebar-primary-width: 3.5rem; padding-inline: .5rem; overflow: hidden; }

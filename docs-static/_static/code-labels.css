@@ -1,0 +1,26 @@
+/* Each code block names its language inside its box. The label is drawn by the style sheet, so a copy leaves it out. */
+div.highlight-bash > div.highlight,
+div.highlight-python > div.highlight {
+  border: 1px solid var(--pst-color-border);
+  border-radius: .25rem;
+  background: var(--pst-color-surface);
+}
+div.highlight-bash > div.highlight::before,
+div.highlight-python > div.highlight::before {
+  display: block;
+  padding: .5rem 1rem 0;
+  font-family: var(--pst-font-family-base);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--pst-color-text-muted);
+}
+div.highlight-bash > div.highlight::before { content: "CLI"; }
+div.highlight-python > div.highlight::before { content: "Python"; }
+div.highlight-bash > div.highlight pre,
+div.highlight-python > div.highlight pre {
+  margin: 0;
+  padding-top: .35rem;
+  border: 0;
+  background: transparent;
+}

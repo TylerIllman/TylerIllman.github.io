@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tasks &#8212; FIRNA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/classes.css?v=4096f787" />
+    <link rel="stylesheet" type="text/css" href="../_static/code-labels.css?v=73613e17" />
+    <link rel="stylesheet" type="text/css" href="../_static/site.css?v=5f7028ef" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/force-light.js?v=051bc122"></script>
+    <script src="../_static/embed.js?v=064ed62a"></script>
+    <script src="../_static/documentation_options.js?v=2caa9db7"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'guide/tasks';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Migrating from earlier versions" href="migrating.html" />
+    <link rel="prev" title="Concepts" href="concepts.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.0" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+     
+  
+
+<a class="navbar-brand logo" href="/">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">FIRNA</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../cli/index.html">
+    Command-line reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    Python API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/">
+    Home
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/builder">
+    Builder
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/families">
+    Families
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/datasets">
+    Datasets
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/about">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../cli/index.html">
+    Command-line reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    Python API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/">
+    Home
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/builder">
+    Builder
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/families">
+    Families
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/datasets">
+    Datasets
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/about">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating from earlier versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure-library.html">Structure library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference-structures.html">Reference structures</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Tasks</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tasks">
+<h1>Tasks<a class="headerlink" href="#tasks" title="Link to this heading">#</a></h1>
+<p>This page lists the common tasks and how to complete each one. Each code block is labelled CLI or Python. Where a
+task has both, they run the same code with the same defaults and write the same files. The examples assume that the
+data folder is <code class="docutils literal notranslate"><span class="pre">data/</span></code>. Each command is described in full in the <a class="reference internal" href="../cli/index.html"><span class="std std-doc">command-line reference</span></a>, and each
+class in the <a class="reference internal" href="../api/index.html"><span class="std std-doc">Python API reference</span></a>.</p>
+<p>A <em>run</em> is one folder of results. The commands that work through many families, such as <code class="docutils literal notranslate"><span class="pre">run-cacofold</span></code> and
+<code class="docutils literal notranslate"><span class="pre">evaluate-consensus</span></code>, write a new folder each time they are started, so earlier results are kept.
+<a class="reference internal" href="concepts.html#runs"><span class="std std-ref">Concepts</span></a> describes runs.</p>
+<section id="set-up-the-data-folder">
+<h2>Set up the data folder<a class="headerlink" href="#set-up-the-data-folder" title="Link to this heading">#</a></h2>
+<p>Create the folders, download the shared Rfam files and prepare <code class="docutils literal notranslate"><span class="pre">Rfam.cm</span></code> for searching. This is done once.</p>
+<p><strong>Reference:</strong> <a class="reference internal" href="../cli/init-data-folder.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">init-data-folder</span></code></span></a>, <a class="reference internal" href="../api/pipelines.html#creating-a-pipeline-class"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">init</span></code></span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>firna<span class="w"> </span>init-data-folder<span class="w"> </span>--download
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna.setup</span><span class="w"> </span><span class="kn">import</span> <span class="n">init</span>
+
+<span class="n">init</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="check-a-step-before-running-it">
+<h2>Check a step before running it<a class="headerlink" href="#check-a-step-before-running-it" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> prints what a <a class="reference internal" href="concepts.html#steps-and-pipelines"><span class="std std-ref">stage</span></a> would read, write and run, and whether an existing
+output would be kept, replaced or refused. It writes nothing and fails if an input is missing, so it is a quick check
+before a long job.</p>
+<p><strong>Reference:</strong> <a class="reference internal" href="../cli/scan-sequences.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">scan-sequences</span></code></span></a>, <a class="reference internal" href="../cli/stage-contract.html"><span class="std std-doc">Stage contract</span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>firna<span class="w"> </span>scan-sequences<span class="w"> </span>--fasta<span class="w"> </span>data/scans/seeds.fa<span class="w"> </span>--mode<span class="w"> </span>rfam<span class="w"> </span>--dry-run
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatasetBuilder</span>
+
+<span class="n">builder</span> <span class="o">=</span> <span class="n">DatasetBuilder</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">scan_sequences</span><span class="p">(</span><span class="n">fasta</span><span class="o">=</span><span class="s1">'data/scans/seeds.fa'</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'rfam'</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The output of both is the same:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>scan-sequences (dry run)
+  read   data/scans/seeds.fa  found
+  read   data/rfam/Rfam.cm  found
+  read   data/rfam/Rfam.cm.i1m  found
+  ...
+  write  data/scans/seeds-rfam.tbl  does not exist, would be created
+  run    cmscan --noali --rfam data/rfam/Rfam.cm data/scans/seeds.fa
+Nothing was written.
+</pre></div>
+</div>
+</section>
+<section id="fold-a-family-s-alignments-with-cacofold">
+<h2>Fold a family’s alignments with CaCoFold<a class="headerlink" href="#fold-a-family-s-alignments-with-cacofold" title="Link to this heading">#</a></h2>
+<p>Download a family’s alignments, build the seed, full and seed+full MSAs, fold each with CaCoFold, and
+extract every sequence’s structure.</p>
+<p><strong>Reference:</strong> <a class="reference internal" href="../cli/download-data.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">download-data</span></code></span></a>, <a class="reference internal" href="../cli/structures/build-alignments.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">structures</span> <span class="pre">build-alignments</span></code></span></a>, <a class="reference internal" href="../cli/structures/run-cacofold.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">structures</span> <span class="pre">run-cacofold</span></code></span></a>, <a class="reference internal" href="../cli/structures/extract.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">structures</span> <span class="pre">extract</span></code></span></a>, <a class="reference internal" href="../api/pipelines.html#structurebuilder"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">StructureBuilder</span></code></span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>firna<span class="w"> </span>download-data<span class="w"> </span>--families<span class="w"> </span>RF00005
+firna<span class="w"> </span>structures<span class="w"> </span>build-alignments<span class="w"> </span>--families<span class="w"> </span>RF00005
+firna<span class="w"> </span>structures<span class="w"> </span>run-cacofold<span class="w"> </span>--families<span class="w"> </span>RF00005
+firna<span class="w"> </span>structures<span class="w"> </span>extract<span class="w"> </span>--families<span class="w"> </span>RF00005
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna</span><span class="w"> </span><span class="kn">import</span> <span class="n">StructureBuilder</span>
+
+<span class="n">structures</span> <span class="o">=</span> <span class="n">StructureBuilder</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span>
+<span class="n">structures</span><span class="o">.</span><span class="n">download_data</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="p">[</span><span class="s1">'RF00005'</span><span class="p">])</span>
+<span class="n">structures</span><span class="o">.</span><span class="n">build_alignments</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="p">[</span><span class="s1">'RF00005'</span><span class="p">])</span>
+<span class="n">structures</span><span class="o">.</span><span class="n">run_cacofold</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="p">[</span><span class="s1">'RF00005'</span><span class="p">])</span>
+<span class="n">structures</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="p">[</span><span class="s1">'RF00005'</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="limit-an-alignment-by-e-value-or-size">
+<h2>Limit an alignment by E-value or size<a class="headerlink" href="#limit-an-alignment-by-e-value-or-size" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">seed</span></code>, <code class="docutils literal notranslate"><span class="pre">full</span></code> and <code class="docutils literal notranslate"><span class="pre">seed_full</span></code> MSAs have no E-value filter or size limit. The <code class="docutils literal notranslate"><span class="pre">filtered</span></code> MSA holds
+the full rows below <code class="docutils literal notranslate"><span class="pre">--evalue</span></code>, and at most <code class="docutils literal notranslate"><span class="pre">--max-sequences</span></code> of them, drawn at random with a fixed seed.</p>
+<p><strong>Reference:</strong> <a class="reference internal" href="../cli/structures/build-alignments.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">structures</span> <span class="pre">build-alignments</span></code></span></a>, <a class="reference internal" href="../api/pipelines.html#structurebuilder"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">StructureBuilder</span></code></span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>firna<span class="w"> </span>structures<span class="w"> </span>build-alignments<span class="w"> </span>--families<span class="w"> </span>RF00017<span class="w"> </span>--include<span class="w"> </span>seed<span class="w"> </span>filtered<span class="w"> </span>--evalue<span class="w"> </span>1e-5<span class="w"> </span>--max-sequences<span class="w"> </span><span class="m">5000</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna</span><span class="w"> </span><span class="kn">import</span> <span class="n">StructureBuilder</span>
+
+<span class="n">StructureBuilder</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span><span class="o">.</span><span class="n">build_alignments</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="p">[</span><span class="s1">'RF00017'</span><span class="p">],</span> <span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">'seed'</span><span class="p">,</span> <span class="s1">'filtered'</span><span class="p">],</span>
+                                    <span class="n">evalue</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">max_sequences</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="get-a-structure-for-every-sequence-of-rfam-s-alignments">
+<h2>Get a structure for every sequence of Rfam’s alignments<a class="headerlink" href="#get-a-structure-for-every-sequence-of-rfam-s-alignments" title="Link to this heading">#</a></h2>
+<p>Project each family’s consensus onto its sequences, and write the tables as a zip file that a dataset
+can use as a source.</p>
+<p><strong>Reference:</strong> <a class="reference internal" href="../cli/download-data.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">download-data</span></code></span></a>, <a class="reference internal" href="../cli/structures/extract.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">structures</span> <span class="pre">extract</span></code></span></a>, <a class="reference internal" href="../api/pipelines.html#structurebuilder"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">StructureBuilder</span></code></span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>firna<span class="w"> </span>download-data<span class="w"> </span>--families<span class="w"> </span>all<span class="w"> </span>--include<span class="w"> </span>seed<span class="w"> </span>full
+firna<span class="w"> </span>structures<span class="w"> </span>extract<span class="w"> </span>--families<span class="w"> </span>all<span class="w"> </span>--msa<span class="w"> </span><span class="s1">'data/rfam/families/{family}/{family}.sto'</span><span class="w"> </span>--resume<span class="w"> </span>--zip<span class="w"> </span>data/rfam_structures.zip
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna</span><span class="w"> </span><span class="kn">import</span> <span class="n">StructureBuilder</span>
+
+<span class="n">structures</span> <span class="o">=</span> <span class="n">StructureBuilder</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span>
+<span class="n">structures</span><span class="o">.</span><span class="n">download_data</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="p">[</span><span class="s1">'all'</span><span class="p">],</span> <span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">'seed'</span><span class="p">,</span> <span class="s1">'full'</span><span class="p">])</span>
+<span class="n">structures</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="p">[</span><span class="s1">'all'</span><span class="p">],</span> <span class="n">msa</span><span class="o">=</span><span class="s1">'data/rfam/families/</span><span class="si">{family}</span><span class="s1">/</span><span class="si">{family}</span><span class="s1">.sto'</span><span class="p">,</span> <span class="n">resume</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                   <span class="nb">zip</span><span class="o">=</span><span class="s1">'data/rfam_structures.zip'</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="predict-the-structures-of-new-sequences">
+<h2>Predict the structures of new sequences<a class="headerlink" href="#predict-the-structures-of-new-sequences" title="Link to this heading">#</a></h2>
+<p>Scan the sequences against Rfam, align each hit to its family’s model and transfer the family’s
+structures onto it.</p>
+<p><strong>Reference:</strong> <a class="reference internal" href="../cli/structures/predict.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">structures</span> <span class="pre">predict</span></code></span></a>, <a class="reference internal" href="../api/pipelines.html#structurebuilder"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">StructureBuilder</span></code></span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>firna<span class="w"> </span>structures<span class="w"> </span>predict<span class="w"> </span>queries.fa<span class="w"> </span>--best-family-only<span class="w"> </span>--workers<span class="w"> </span><span class="m">8</span><span class="w"> </span>--out<span class="w"> </span>results/my_queries
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna</span><span class="w"> </span><span class="kn">import</span> <span class="n">StructureBuilder</span>
+
+<span class="n">StructureBuilder</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s1">'queries.fa'</span><span class="p">,</span> <span class="n">best_family_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="s1">'results/my_queries'</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="find-the-rfam-family-of-each-sequence">
+<h2>Find the Rfam family of each sequence<a class="headerlink" href="#find-the-rfam-family-of-each-sequence" title="Link to this heading">#</a></h2>
+<p>Scan the sequences, then keep each sequence’s best family. The best family has the lowest E-value, then
+the highest bit score, then the lowest accession.</p>
+<p><strong>Reference:</strong> <a class="reference internal" href="../cli/scan-sequences.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">scan-sequences</span></code></span></a>, <a class="reference internal" href="../api/data-structures.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">HitTable</span></code></span></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatasetBuilder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">firna.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">HitTable</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">DatasetBuilder</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span><span class="o">.</span><span class="n">scan_sequences</span><span class="p">(</span><span class="n">fasta</span><span class="o">=</span><span class="s1">'queries.fa'</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="s1">'data/scans/queries.tbl'</span><span class="p">)</span>
+<span class="n">hits</span> <span class="o">=</span> <span class="n">HitTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+<span class="n">families</span> <span class="o">=</span> <span class="n">hits</span><span class="o">.</span><span class="n">best_families</span><span class="p">(</span><span class="n">max_evalue</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>                <span class="c1"># {sequence name: family}</span>
+<span class="n">kept</span><span class="p">,</span> <span class="n">dropped</span> <span class="o">=</span> <span class="n">hits</span><span class="o">.</span><span class="n">best_family_only</span><span class="p">()</span>                       <span class="c1"># the best family of each region</span>
+<span class="n">kept</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'data/queries_hits.csv'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="use-your-own-reference-structures">
+<h2>Use your own reference structures<a class="headerlink" href="#use-your-own-reference-structures" title="Link to this heading">#</a></h2>
+<p>The commands read three sources: RNA3DB annotations, ArchiveII’s parquet file and a reference table. Any
+other data is set up in Python and written as a reference table, which every command then reads with
+<code class="docutils literal notranslate"><span class="pre">--reference-structures</span></code>. The columns of the table are given in
+<a class="reference internal" href="reference-structures.html"><span class="std std-doc">Reference structures</span></a>.</p>
+<p><strong>Reference:</strong> <a class="reference internal" href="../cli/scan-sequences.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">scan-sequences</span></code></span></a>, <a class="reference internal" href="../cli/benchmark/make-set.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">benchmark</span> <span class="pre">make-set</span></code></span></a>, <a class="reference internal" href="../api/data-structures.html#reference-collections"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">ReferenceCollection</span></code></span></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">firna.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReferenceCollection</span>
+
+<span class="n">references</span> <span class="o">=</span> <span class="n">ReferenceCollection</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'my_structures.csv'</span><span class="p">)</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
+    <span class="n">references</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">rna</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">dot_bracket</span><span class="p">)</span>
+<span class="n">references</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'data/my_references.tsv'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>firna<span class="w"> </span>scan-sequences<span class="w"> </span>--reference-structures<span class="w"> </span>data/my_references.tsv
+firna<span class="w"> </span>benchmark<span class="w"> </span>make-set<span class="w"> </span>--reference-structures<span class="w"> </span>data/my_references.tsv<span class="w"> </span>--out<span class="w"> </span>data/benchmark_set_mine.tsv
+</pre></div>
+</div>
+</section>
+<section id="write-the-families-of-a-dataset-as-a-folder-or-a-zip-file">
+<h2>Write the families of a dataset as a folder or a zip file<a class="headerlink" href="#write-the-families-of-a-dataset-as-a-folder-or-a-zip-file" title="Link to this heading">#</a></h2>
+<p>Give each sequence the family it hits, and write one <code class="docutils literal notranslate"><span class="pre">&lt;family&gt;.structures.tsv</span></code> for each family that has at
+least one sequence. Sequences with no family go to <code class="docutils literal notranslate"><span class="pre">unmatched.structures.tsv</span></code>. A dataset does not need this,
+because <code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">dataset</span> <span class="pre">make-config</span></code> reads a reference source and its scan directly.</p>
+<p><strong>Reference:</strong> <a class="reference internal" href="../cli/scan-sequences.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">scan-sequences</span></code></span></a>, <a class="reference internal" href="../api/data-structures.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">HitTable</span></code></span></a>, <a class="reference internal" href="../api/data-structures.html#reference-collections"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">ReferenceCollection</span></code></span></a>, <a class="reference internal" href="../api/data-structures.html#structure-tables"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">StructureTable</span></code></span></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatasetBuilder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">firna.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">HitTable</span><span class="p">,</span> <span class="n">ReferenceCollection</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">firna.io.structure_tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">StructureTable</span>
+
+<span class="n">scan</span> <span class="o">=</span> <span class="n">DatasetBuilder</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span><span class="o">.</span><span class="n">scan_sequences</span><span class="p">(</span><span class="n">reference_structures</span><span class="o">=</span><span class="s1">'data/archiveii/archiveii.parquet'</span><span class="p">)</span>
+<span class="n">references</span> <span class="o">=</span> <span class="n">ReferenceCollection</span><span class="o">.</span><span class="n">read_archiveii</span><span class="p">(</span><span class="s1">'data/archiveii/archiveii.parquet'</span><span class="p">)</span>
+<span class="n">families</span> <span class="o">=</span> <span class="n">HitTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">scan</span><span class="p">,</span> <span class="n">significant_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">best_families</span><span class="p">(</span><span class="n">max_evalue</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">StructureTable</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">rna</span> <span class="ow">in</span> <span class="n">references</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">rna</span><span class="o">.</span><span class="n">sequence</span><span class="p">,</span> <span class="n">rna</span><span class="o">.</span><span class="n">structure</span><span class="p">(),</span> <span class="n">family</span><span class="o">=</span><span class="n">families</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+<span class="n">table</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'data/archiveii_families.zip'</span><span class="p">)</span>       <span class="c1"># or a folder, without the .zip</span>
+</pre></div>
+</div>
+</section>
+<section id="build-a-dataset-whose-splits-never-share-a-family">
+<h2>Build a dataset whose splits never share a family<a class="headerlink" href="#build-a-dataset-whose-splits-never-share-a-family" title="Link to this heading">#</a></h2>
+<p>List the sources of each stage, make the assignment from the scan of the seed sequences, and write the
+parquet files. <code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">download-data</span> <span class="pre">--include</span> <span class="pre">scans</span></code> fetches the finished scan in place of the first two lines.
+<code class="docutils literal notranslate"><span class="pre">--mode</span> <span class="pre">rfam</span></code> gives <code class="docutils literal notranslate"><span class="pre">cmscan</span></code> the strict filters of <a class="reference internal" href="../cli/scan-sequences.html#scan-modes"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">scan-sequences</span></code></span></a>, which
+makes the scan of every seed sequence affordable.</p>
+<p><strong>Reference:</strong> <a class="reference internal" href="../cli/download-data.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">download-data</span></code></span></a>, <a class="reference internal" href="../cli/scan-sequences.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">scan-sequences</span></code></span></a>, <a class="reference internal" href="../cli/dataset/make-config.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">dataset</span> <span class="pre">make-config</span></code></span></a>, <a class="reference internal" href="../cli/dataset/make-assignment.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">dataset</span> <span class="pre">make-assignment</span></code></span></a>, <a class="reference internal" href="../cli/dataset/build.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">dataset</span> <span class="pre">build</span></code></span></a>, <a class="reference internal" href="../api/pipelines.html#datasetbuilder"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">DatasetBuilder</span></code></span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>firna<span class="w"> </span>download-data<span class="w"> </span>--include<span class="w"> </span>core<span class="w"> </span>seed-fasta
+firna<span class="w"> </span>scan-sequences<span class="w"> </span>--fasta<span class="w"> </span>data/scans/seeds.fa<span class="w"> </span>--mode<span class="w"> </span>rfam
+firna<span class="w"> </span>scan-sequences<span class="w"> </span>--reference-structures<span class="w"> </span>data/archiveii/archiveii.parquet
+firna<span class="w"> </span>dataset<span class="w"> </span>make-config<span class="w"> </span>--source<span class="w"> </span>pretrain:rfam<span class="o">=</span>data/rfam_structures.zip<span class="w"> </span>--source<span class="w"> </span>finetune:archiveii<span class="o">=</span>data/archiveii/archiveii.parquet<span class="w"> </span>--ratios<span class="w"> </span><span class="nv">pretrain</span><span class="o">=</span><span class="m">90</span>:5:5<span class="w"> </span>--ratios<span class="w"> </span><span class="nv">finetune</span><span class="o">=</span><span class="m">70</span>:15:15
+firna<span class="w"> </span>dataset<span class="w"> </span>make-assignment
+firna<span class="w"> </span>dataset<span class="w"> </span>build
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatasetBuilder</span>
+
+<span class="n">builder</span> <span class="o">=</span> <span class="n">DatasetBuilder</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">download_data</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">'core'</span><span class="p">,</span> <span class="s1">'seed-fasta'</span><span class="p">])</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">seed_scan</span><span class="p">()</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">scan_sequences</span><span class="p">(</span><span class="n">reference_structures</span><span class="o">=</span><span class="s1">'data/archiveii/archiveii.parquet'</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">make_config</span><span class="p">([</span><span class="s1">'pretrain:rfam=data/rfam_structures.zip'</span><span class="p">,</span>
+                     <span class="s1">'finetune:archiveii=data/archiveii/archiveii.parquet'</span><span class="p">],</span>
+                    <span class="n">ratios</span><span class="o">=</span><span class="p">{</span><span class="s1">'pretrain'</span><span class="p">:</span> <span class="s1">'90:5:5'</span><span class="p">,</span> <span class="s1">'finetune'</span><span class="p">:</span> <span class="s1">'70:15:15'</span><span class="p">})</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">make_assignment</span><span class="p">()</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">rows</span><span class="p">(</span><span class="s1">'pretrain'</span><span class="p">,</span> <span class="s1">'train'</span><span class="p">)</span>                <span class="c1"># the rows of one split, as a DataFrame</span>
+</pre></div>
+</div>
+</section>
+<section id="inspect-which-families-were-joined">
+<h2>Inspect which families were joined<a class="headerlink" href="#inspect-which-families-were-joined" title="Link to this heading">#</a></h2>
+<p><strong>Reference:</strong> <a class="reference internal" href="../api/pipelines.html#the-family-graph"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">DatasetBuilder</span></code></span></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatasetBuilder</span>
+
+<span class="n">builder</span> <span class="o">=</span> <span class="n">DatasetBuilder</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">family</span><span class="p">(</span><span class="s1">'RF00005'</span><span class="p">)</span>                        <span class="c1"># its component, split and links</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">components</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="score-consensus-structures-against-known-structures">
+<h2>Score consensus structures against known structures<a class="headerlink" href="#score-consensus-structures-against-known-structures" title="Link to this heading">#</a></h2>
+<p>Score each family’s structures on its hits to the reference RNAs. The family’s CM structure and Rfam’s seed
+structure are always scored. The structures are those of the newest <a class="reference internal" href="concepts.html#runs"><span class="std std-ref">run</span></a> of <code class="docutils literal notranslate"><span class="pre">run-cacofold</span></code>, or any consensus
+structures laid out as a <a class="reference internal" href="structure-library.html"><span class="std std-doc">structure library</span></a> and given with <code class="docutils literal notranslate"><span class="pre">--structure-dir</span></code>.</p>
+<p><strong>Reference:</strong> <a class="reference internal" href="../cli/scan-sequences.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">scan-sequences</span></code></span></a>, <a class="reference internal" href="../cli/benchmark/make-set.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">benchmark</span> <span class="pre">make-set</span></code></span></a>, <a class="reference internal" href="../cli/benchmark/evaluate-consensus.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">benchmark</span> <span class="pre">evaluate-consensus</span></code></span></a>, <a class="reference internal" href="../api/data-structures.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">HitTable</span></code></span></a>, <a class="reference internal" href="../api/data-structures.html#reference-collections"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">ReferenceCollection</span></code></span></a>, <a class="reference internal" href="../api/functions.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">evaluate_family</span></code></span></a>, <a class="reference internal" href="../api/functions.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">family_means</span></code></span></a>, <a class="reference internal" href="../api/functions.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">find_hits</span></code></span></a>, <a class="reference internal" href="../api/pipelines.html#consensusbenchmark"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">ConsensusBenchmark</span></code></span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>firna<span class="w"> </span>scan-sequences<span class="w"> </span>--reference-structures<span class="w"> </span>data/archiveii/archiveii.parquet<span class="w"> </span>--subset<span class="w"> </span>RNaseP
+firna<span class="w"> </span>benchmark<span class="w"> </span>make-set<span class="w"> </span>--reference-structures<span class="w"> </span>data/archiveii/archiveii.parquet<span class="w"> </span>--subset<span class="w"> </span>RNaseP<span class="w"> </span>--out<span class="w"> </span>data/benchmark_set_rnasep.tsv
+firna<span class="w"> </span>benchmark<span class="w"> </span>evaluate-consensus<span class="w"> </span>--families<span class="w"> </span>RF00010<span class="w"> </span>--hits-table<span class="w"> </span>data/scans/archiveii-RNaseP.tbl<span class="w"> </span>--benchmark-set<span class="w"> </span>data/benchmark_set_rnasep.tsv<span class="w"> </span>--best-family-only<span class="w"> </span>--fold<span class="w"> </span>rnafold
+firna<span class="w"> </span>benchmark<span class="w"> </span>evaluate-consensus<span class="w"> </span>--families<span class="w"> </span>RF00010<span class="w"> </span>--hits-table<span class="w"> </span>data/scans/archiveii-RNaseP.tbl<span class="w"> </span>--benchmark-set<span class="w"> </span>data/benchmark_set_rnasep.tsv<span class="w"> </span>--structure-dir<span class="w"> </span>my_structures<span class="w"> </span>--out<span class="w"> </span>results/my_structures
+</pre></div>
+</div>
+<p>On objects in memory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">HitTable</span><span class="p">,</span> <span class="n">ReferenceCollection</span><span class="p">,</span> <span class="n">evaluate_family</span><span class="p">,</span> <span class="n">family_means</span><span class="p">,</span> <span class="n">find_hits</span>
+
+<span class="n">references</span> <span class="o">=</span> <span class="n">ReferenceCollection</span><span class="o">.</span><span class="n">read_archiveii</span><span class="p">(</span><span class="s1">'data/archiveii/archiveii.parquet'</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">'RNaseP'</span><span class="p">)</span>
+<span class="n">hits</span> <span class="o">=</span> <span class="n">find_hits</span><span class="p">(</span><span class="n">HitTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'data/scans/archiveii-RNaseP.tbl'</span><span class="p">),</span> <span class="n">references</span><span class="p">,</span> <span class="n">best_family_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">evaluate_family</span><span class="p">(</span><span class="s1">'RF00010'</span><span class="p">,</span> <span class="n">hits</span><span class="p">,</span> <span class="n">fold</span><span class="o">=</span><span class="p">[</span><span class="s1">'rnafold'</span><span class="p">])</span>
+<span class="n">family_means</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Writing the same files as the commands:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsensusBenchmark</span>
+
+<span class="n">benchmark</span> <span class="o">=</span> <span class="n">ConsensusBenchmark</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span>
+<span class="n">benchmark</span><span class="o">.</span><span class="n">make_set</span><span class="p">(</span><span class="n">reference_structures</span><span class="o">=</span><span class="s1">'data/archiveii/archiveii.parquet'</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">'RNaseP'</span><span class="p">],</span>
+                   <span class="n">out</span><span class="o">=</span><span class="s1">'data/benchmark_set_rnasep.tsv'</span><span class="p">)</span>
+<span class="n">benchmark</span><span class="o">.</span><span class="n">evaluate_consensus</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="p">[</span><span class="s1">'RF00010'</span><span class="p">],</span> <span class="n">hits_table</span><span class="o">=</span><span class="s1">'data/scans/archiveii-RNaseP.tbl'</span><span class="p">,</span>
+                             <span class="n">benchmark_set</span><span class="o">=</span><span class="s1">'data/benchmark_set_rnasep.tsv'</span><span class="p">,</span> <span class="n">best_family_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fold</span><span class="o">=</span><span class="p">[</span><span class="s1">'rnafold'</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="score-only-the-resolved-part-of-rna3db-chains">
+<h2>Score only the resolved part of RNA3DB chains<a class="headerlink" href="#score-only-the-resolved-part-of-rna3db-chains" title="Link to this heading">#</a></h2>
+<p>Read the missing residues from the mmCIF files and leave out chains with unresolved bases inside them.</p>
+<p><strong>Reference:</strong> <a class="reference internal" href="../cli/benchmark/find-missing-residues.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">benchmark</span> <span class="pre">find-missing-residues</span></code></span></a>, <a class="reference internal" href="../cli/benchmark/make-set.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">benchmark</span> <span class="pre">make-set</span></code></span></a>, <a class="reference internal" href="../cli/benchmark/evaluate-consensus.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">benchmark</span> <span class="pre">evaluate-consensus</span></code></span></a>, <a class="reference internal" href="../api/data-structures.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">HitTable</span></code></span></a>, <a class="reference internal" href="../api/data-structures.html#reference-collections"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">ReferenceCollection</span></code></span></a>, <a class="reference internal" href="../api/functions.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">evaluate_family</span></code></span></a>, <a class="reference internal" href="../api/functions.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">find_hits</span></code></span></a>, <a class="reference internal" href="../api/functions.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">read_missing_residues</span></code></span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>firna<span class="w"> </span>benchmark<span class="w"> </span>find-missing-residues
+firna<span class="w"> </span>benchmark<span class="w"> </span>make-set<span class="w"> </span>--missing-residues<span class="w"> </span>data/missing_residues.tsv<span class="w"> </span>--min-gap<span class="w"> </span><span class="m">1</span><span class="w"> </span>--min-pairs<span class="w"> </span><span class="m">1</span><span class="w"> </span>--out<span class="w"> </span>data/benchmark_set_strict.tsv
+firna<span class="w"> </span>benchmark<span class="w"> </span>evaluate-consensus<span class="w"> </span>--families<span class="w"> </span>all<span class="w"> </span>--hits-table<span class="w"> </span>data/scans/rna3db.tbl<span class="w"> </span>--benchmark-set<span class="w"> </span>data/benchmark_set_strict.tsv<span class="w"> </span>--best-family-only<span class="w"> </span>--min-coverage<span class="w"> </span><span class="m">0</span>.95<span class="w"> </span>--workers<span class="w"> </span><span class="m">8</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">HitTable</span><span class="p">,</span> <span class="n">ReferenceCollection</span><span class="p">,</span> <span class="n">evaluate_family</span><span class="p">,</span> <span class="n">find_hits</span><span class="p">,</span> <span class="n">read_missing_residues</span>
+
+<span class="n">references</span> <span class="o">=</span> <span class="n">ReferenceCollection</span><span class="o">.</span><span class="n">read_rna3db</span><span class="p">(</span><span class="s1">'data/annotations'</span><span class="p">)</span>
+<span class="n">windows</span><span class="p">,</span> <span class="n">dropped</span> <span class="o">=</span> <span class="n">references</span><span class="o">.</span><span class="n">scoring_windows</span><span class="p">(</span><span class="n">min_gap</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_pairs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                              <span class="n">missing</span><span class="o">=</span><span class="n">read_missing_residues</span><span class="p">(</span><span class="s1">'data/missing_residues.tsv'</span><span class="p">))</span>
+<span class="n">hits</span> <span class="o">=</span> <span class="n">find_hits</span><span class="p">(</span><span class="n">HitTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'data/scans/rna3db.tbl'</span><span class="p">),</span> <span class="n">references</span><span class="p">,</span> <span class="n">best_family_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">windows</span><span class="o">=</span><span class="n">windows</span><span class="p">,</span> <span class="n">min_coverage</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">evaluate_family</span><span class="p">(</span><span class="s1">'RF00437'</span><span class="p">,</span> <span class="n">hits</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="read-the-results-of-an-evaluation-run">
+<h2>Read the results of an evaluation run<a class="headerlink" href="#read-the-results-of-an-evaluation-run" title="Link to this heading">#</a></h2>
+<p>An evaluation run is the folder that one <code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">benchmark</span> <span class="pre">evaluate-consensus</span></code> command writes. It is a new folder in
+<code class="docutils literal notranslate"><span class="pre">data/evaluations/</span></code>, named after the start time and the settings, such as <code class="docutils literal notranslate"><span class="pre">2026-10-06_14-32-05_rna3db_secondary</span></code>, or the
+folder given with <code class="docutils literal notranslate"><span class="pre">--out</span></code>. It holds the comparison tables as CSV files, with one row for each family, and the result
+of each hit in a folder for each family.</p>
+<p>The results of each hit are read as <code class="docutils literal notranslate"><span class="pre">HitResult</span></code>s. <code class="docutils literal notranslate"><span class="pre">compare</span></code> writes every structure laid onto its chain as a Stockholm
+file, from the newest run or the one given with <code class="docutils literal notranslate"><span class="pre">--evaluation-run</span></code>.</p>
+<p><strong>Reference:</strong> <a class="reference internal" href="../cli/benchmark/compare.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">benchmark</span> <span class="pre">compare</span></code></span></a>, <a class="reference internal" href="../api/data-structures.html#evaluation-runs"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">ConsensusEvaluation</span></code></span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>firna<span class="w"> </span>benchmark<span class="w"> </span>compare<span class="w"> </span>--families<span class="w"> </span>all<span class="w"> </span>--only-improved<span class="w"> </span>--min-gain<span class="w"> </span><span class="m">0</span>.05<span class="w"> </span>--out<span class="w"> </span>improved.sto
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsensusEvaluation</span>
+
+<span class="n">run</span> <span class="o">=</span> <span class="n">ConsensusEvaluation</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'data/evaluations/my_run'</span><span class="p">)</span>
+<span class="n">run</span><span class="p">[</span><span class="s1">'RF00010'</span><span class="p">]</span>                                   <span class="c1"># the HitResults of one family</span>
+<span class="n">run</span><span class="o">.</span><span class="n">improved_families</span><span class="p">(</span><span class="n">min_gain</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">baseline</span><span class="o">=</span><span class="s1">'rfam_seed'</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="change-one-setting-without-redoing-earlier-work">
+<h2>Change one setting without redoing earlier work<a class="headerlink" href="#change-one-setting-without-redoing-earlier-work" title="Link to this heading">#</a></h2>
+<p>Every stage records the inputs and options of its output, so a later stage can be run again with new settings while the
+expensive earlier ones are kept. For example, a benchmark set with a stricter rule reuses the table of missing residues.
+Giving it its own <code class="docutils literal notranslate"><span class="pre">--out</span></code> leaves the default <code class="docutils literal notranslate"><span class="pre">data/benchmark_set.tsv</span></code> as it was. Asking for different options into the
+same file is refused until <code class="docutils literal notranslate"><span class="pre">--overwrite</span></code> is added.</p>
+<p><strong>Reference:</strong> <a class="reference internal" href="../cli/benchmark/make-set.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">benchmark</span> <span class="pre">make-set</span></code></span></a>, <a class="reference internal" href="../cli/stage-contract.html"><span class="std std-doc">Stage contract</span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>firna<span class="w"> </span>benchmark<span class="w"> </span>make-set<span class="w"> </span>--missing-residues<span class="w"> </span>data/missing_residues.tsv<span class="w"> </span>--min-gap<span class="w"> </span><span class="m">1</span><span class="w"> </span>--min-pairs<span class="w"> </span><span class="m">1</span><span class="w"> </span>--out<span class="w"> </span>data/benchmark_set_strict.tsv
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsensusBenchmark</span>
+
+<span class="n">benchmark</span> <span class="o">=</span> <span class="n">ConsensusBenchmark</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span>
+<span class="n">benchmark</span><span class="o">.</span><span class="n">make_set</span><span class="p">(</span><span class="n">missing_residues</span><span class="o">=</span><span class="s1">'data/missing_residues.tsv'</span><span class="p">,</span> <span class="n">min_gap</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_pairs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                   <span class="n">out</span><span class="o">=</span><span class="s1">'data/benchmark_set_strict.tsv'</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="concepts.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Concepts</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="migrating.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Migrating from earlier versions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-data-folder">Set up the data folder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-a-step-before-running-it">Check a step before running it</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fold-a-family-s-alignments-with-cacofold">Fold a family’s alignments with CaCoFold</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-an-alignment-by-e-value-or-size">Limit an alignment by E-value or size</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-a-structure-for-every-sequence-of-rfam-s-alignments">Get a structure for every sequence of Rfam’s alignments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-the-structures-of-new-sequences">Predict the structures of new sequences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-rfam-family-of-each-sequence">Find the Rfam family of each sequence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-your-own-reference-structures">Use your own reference structures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-families-of-a-dataset-as-a-folder-or-a-zip-file">Write the families of a dataset as a folder or a zip file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-a-dataset-whose-splits-never-share-a-family">Build a dataset whose splits never share a family</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-which-families-were-joined">Inspect which families were joined</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#score-consensus-structures-against-known-structures">Score consensus structures against known structures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#score-only-the-resolved-part-of-rna3db-chains">Score only the resolved part of RNA3DB chains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-results-of-an-evaluation-run">Read the results of an evaluation run</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-one-setting-without-redoing-earlier-work">Change one setting without redoing earlier work</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, FIRNA contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.2.0.
+  </p>
+</div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pipeline classes &#8212; FIRNA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/classes.css?v=4096f787" />
+    <link rel="stylesheet" type="text/css" href="../_static/code-labels.css?v=73613e17" />
+    <link rel="stylesheet" type="text/css" href="../_static/site.css?v=5f7028ef" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/force-light.js?v=051bc122"></script>
+    <script src="../_static/embed.js?v=064ed62a"></script>
+    <script src="../_static/documentation_options.js?v=2caa9db7"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/pipelines';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Classes" href="classes.html" />
+    <link rel="prev" title="Python API" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.0" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+     
+  
+
+<a class="navbar-brand logo" href="/">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">FIRNA</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../cli/index.html">
+    Command-line reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Python API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/">
+    Home
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/builder">
+    Builder
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/families">
+    Families
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/datasets">
+    Datasets
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/about">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../cli/index.html">
+    Command-line reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Python API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/">
+    Home
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/builder">
+    Builder
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/families">
+    Families
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/datasets">
+    Datasets
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/about">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Pipeline classes</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="classes.html">Classes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/firna.pipelines.StructureBuilder.html">firna.pipelines.StructureBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/firna.pipelines.DatasetBuilder.html">firna.pipelines.DatasetBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/firna.pipelines.ConsensusBenchmark.html">firna.pipelines.ConsensusBenchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/firna.dataset.dataset_config.DatasetConfig.html">firna.dataset.dataset_config.DatasetConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/firna.layout.ProjectLayout.html">firna.layout.ProjectLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/firna.io.hits.HitTable.html">firna.io.hits.HitTable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/firna.io.references.ReferenceCollection.html">firna.io.references.ReferenceCollection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/firna.io.structure_tables.StructureTable.html">firna.io.structure_tables.StructureTable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/firna.structures.library.StructureLibrary.html">firna.structures.library.StructureLibrary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/firna.io.consensus_evaluation.ConsensusEvaluation.html">firna.io.consensus_evaluation.ConsensusEvaluation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="data-structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Python API</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Pipeline classes</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="pipeline-classes">
+<h1>Pipeline classes<a class="headerlink" href="#pipeline-classes" title="Link to this heading">#</a></h1>
+<p>A pipeline class holds the steps of one job on a data folder, with each step as a method. A job is completed by
+calling its steps one after another, in the order given below for each class. No method runs them all, so a script
+states every step and its options. <a class="reference internal" href="classes.html"><span class="std std-doc">Classes</span></a> states what every class is for.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Used for</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#structurebuilder"><code class="docutils literal notranslate"><span class="pre">StructureBuilder</span></code></a></p></td>
+<td><p>Getting structures from Rfam.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datasetbuilder"><code class="docutils literal notranslate"><span class="pre">DatasetBuilder</span></code></a></p></td>
+<td><p>Building a dataset whose splits never share a family, and reading it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#consensusbenchmark"><code class="docutils literal notranslate"><span class="pre">ConsensusBenchmark</span></code></a></p></td>
+<td><p>Scoring consensus structures against known structures.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="creating-a-pipeline-class">
+<h2>Creating a pipeline class<a class="headerlink" href="#creating-a-pipeline-class" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StructureBuilder</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">report</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">interface</span><span class="o">=</span><span class="s1">'python'</span><span class="p">)</span>
+<span class="n">ConsensusBenchmark</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">report</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">interface</span><span class="o">=</span><span class="s1">'python'</span><span class="p">)</span>
+<span class="n">DatasetBuilder</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">dataset_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">report</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">interface</span><span class="o">=</span><span class="s1">'python'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">data_dir</span></code> is the data folder. Without one, the class uses <code class="docutils literal notranslate"><span class="pre">$FIRNA_DATA</span></code>, else <code class="docutils literal notranslate"><span class="pre">./data</span></code>. Classes given the same folder
+read and write the same files. <code class="docutils literal notranslate"><span class="pre">report</span></code> receives each progress message. Each class has the attribute <code class="docutils literal notranslate"><span class="pre">layout</span></code>, a
+<code class="docutils literal notranslate"><span class="pre">ProjectLayout</span></code> that gives the default path of every file, and the method <code class="docutils literal notranslate"><span class="pre">paths()</span></code>, which returns those paths as a
+DataFrame with whether each exists.</p>
+<p>Create the data folder once before the first step, with the function that <code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">init-data-folder</span></code> uses. With
+<code class="docutils literal notranslate"><span class="pre">download=True</span></code> it fetches the missing shared Rfam files and presses <code class="docutils literal notranslate"><span class="pre">Rfam.cm</span></code>. It returns a table of the shared files.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna.setup</span><span class="w"> </span><span class="kn">import</span> <span class="n">init</span>
+
+<span class="n">init</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="structurebuilder">
+<h2>StructureBuilder<a class="headerlink" href="#structurebuilder" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">StructureBuilder</span></code> gets the structures of Rfam families. Call its steps in this order.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Order</p></th>
+<th class="head"><p>Method</p></th>
+<th class="head"><p>Command</p></th>
+<th class="head"><p>Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">download_data</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">download-data</span></code></p></td>
+<td><p>The Rfam files and the alignments of each family.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">build_alignments</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">structures</span> <span class="pre">build-alignments</span></code></p></td>
+<td><p>The seed, full and seed+full MSAs of each family.</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">run_cacofold</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">structures</span> <span class="pre">run-cacofold</span></code></p></td>
+<td><p>The CaCoFold structures of each MSA.</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">extract</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">structures</span> <span class="pre">extract</span></code></p></td>
+<td><p>The structure of every sequence, from the consensus of its MSA.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna</span><span class="w"> </span><span class="kn">import</span> <span class="n">StructureBuilder</span>
+
+<span class="n">structures</span> <span class="o">=</span> <span class="n">StructureBuilder</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span>
+<span class="n">families</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'RF00005'</span><span class="p">]</span>
+<span class="n">structures</span><span class="o">.</span><span class="n">download_data</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="n">families</span><span class="p">)</span>
+<span class="n">structures</span><span class="o">.</span><span class="n">build_alignments</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="n">families</span><span class="p">)</span>
+<span class="n">structures</span><span class="o">.</span><span class="n">run_cacofold</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="n">families</span><span class="p">)</span>
+<span class="n">structures</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="n">families</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">predict</span></code> is separate from this order, because it takes sequences of its own. It gives them the structures of the
+families they hit.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">structures</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s1">'queries.fa'</span><span class="p">,</span> <span class="n">best_family_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="s1">'results/my_queries'</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="datasetbuilder">
+<h2>DatasetBuilder<a class="headerlink" href="#datasetbuilder" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">DatasetBuilder</span></code> builds a dataset whose splits never share a family. Call its steps in this order, after the sources
+are listed with <code class="docutils literal notranslate"><span class="pre">make_config</span></code>, which is described under <a class="reference internal" href="#the-dataset-settings">The dataset settings</a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Order</p></th>
+<th class="head"><p>Method</p></th>
+<th class="head"><p>Command</p></th>
+<th class="head"><p>Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">seed_scan</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">scan-sequences</span> <span class="pre">--fasta</span> <span class="pre">data/scans/seeds.fa</span> <span class="pre">--mode</span> <span class="pre">rfam</span></code></p></td>
+<td><p>The scan of the seed sequences against Rfam.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">link_families</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">dataset</span> <span class="pre">link-families</span></code></p></td>
+<td><p>The links between families.</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">find_components</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">dataset</span> <span class="pre">find-components</span></code></p></td>
+<td><p>The component of each family.</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">split_components</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">dataset</span> <span class="pre">split-components</span></code></p></td>
+<td><p>The split of each component, in <code class="docutils literal notranslate"><span class="pre">assignment.tsv</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">build</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">dataset</span> <span class="pre">build</span></code></p></td>
+<td><p>The parquet files.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatasetBuilder</span>
+
+<span class="n">builder</span> <span class="o">=</span> <span class="n">DatasetBuilder</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">download_data</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">'core'</span><span class="p">,</span> <span class="s1">'seed-fasta'</span><span class="p">])</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">make_config</span><span class="p">([</span><span class="s1">'pretrain:rfam=data/structures'</span><span class="p">])</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">seed_scan</span><span class="p">()</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">link_families</span><span class="p">()</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">find_components</span><span class="p">(</span><span class="n">min_fraction</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">split_components</span><span class="p">()</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">rows</span><span class="p">(</span><span class="s1">'pretrain'</span><span class="p">,</span> <span class="s1">'train'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">make_assignment</span></code> runs <code class="docutils literal notranslate"><span class="pre">link_families</span></code>, <code class="docutils literal notranslate"><span class="pre">find_components</span></code> and <code class="docutils literal notranslate"><span class="pre">split_components</span></code> in one call, with the settings of all
+three. <code class="docutils literal notranslate"><span class="pre">download_data(include=['scans'])</span></code> fetches finished scan tables in place of <code class="docutils literal notranslate"><span class="pre">seed_scan</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">builder</span><span class="o">.</span><span class="n">download_data</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">'core'</span><span class="p">,</span> <span class="s1">'scans'</span><span class="p">])</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">make_assignment</span><span class="p">(</span><span class="n">min_fraction</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The other steps prepare input. <code class="docutils literal notranslate"><span class="pre">seed_scan</span></code> is <code class="docutils literal notranslate"><span class="pre">scan_sequences</span></code> with <code class="docutils literal notranslate"><span class="pre">fasta</span></code> and <code class="docutils literal notranslate"><span class="pre">mode</span></code> set for the seed sequences, and
+<code class="docutils literal notranslate"><span class="pre">scan_sequences</span></code> takes any other input, such as reference structures. <code class="docutils literal notranslate"><span class="pre">download_data</span></code> writes the seed FASTA that
+<code class="docutils literal notranslate"><span class="pre">seed_scan</span></code> reads, with <code class="docutils literal notranslate"><span class="pre">include=['seed-fasta']</span></code>, and <code class="docutils literal notranslate"><span class="pre">make_seed_fasta</span></code> writes the same file from <code class="docutils literal notranslate"><span class="pre">Rfam.seed</span></code>.</p>
+</section>
+<section id="consensusbenchmark">
+<h2>ConsensusBenchmark<a class="headerlink" href="#consensusbenchmark" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ConsensusBenchmark</span></code> scores consensus structures against known structures. Call its steps in this order. The hits table
+comes from <code class="docutils literal notranslate"><span class="pre">DatasetBuilder.scan_sequences</span></code> or <code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">scan-sequences</span></code>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Order</p></th>
+<th class="head"><p>Method</p></th>
+<th class="head"><p>Command</p></th>
+<th class="head"><p>Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">find_missing_residues</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">benchmark</span> <span class="pre">find-missing-residues</span></code></p></td>
+<td><p>The unresolved residues of the reference chains. It applies only to RNA3DB and can be left out for other references.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">make_set</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">benchmark</span> <span class="pre">make-set</span></code></p></td>
+<td><p>The reference RNAs and their scoring windows.</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">evaluate_consensus</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">benchmark</span> <span class="pre">evaluate-consensus</span></code></p></td>
+<td><p>The scores of every structure, with the F1 score and the MCC.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">firna</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsensusBenchmark</span>
+
+<span class="n">benchmark</span> <span class="o">=</span> <span class="n">ConsensusBenchmark</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span>
+<span class="n">benchmark</span><span class="o">.</span><span class="n">find_missing_residues</span><span class="p">()</span>
+<span class="n">benchmark</span><span class="o">.</span><span class="n">make_set</span><span class="p">(</span><span class="n">missing_residues</span><span class="o">=</span><span class="s1">'data/missing_residues.tsv'</span><span class="p">)</span>
+<span class="n">benchmark</span><span class="o">.</span><span class="n">evaluate_consensus</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="p">[</span><span class="s1">'RF00005'</span><span class="p">],</span> <span class="n">hits_table</span><span class="o">=</span><span class="s1">'data/scans/rna3db.tbl'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">compare</span></code> is separate from this order. It reads a finished evaluation and lays the structures of chosen hits onto each
+chain, for inspection by eye.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">benchmark</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="p">[</span><span class="s1">'RF00005'</span><span class="p">],</span> <span class="n">out</span><span class="o">=</span><span class="s1">'rf00005.sto'</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Link to this heading">#</a></h2>
+<p>The keywords of a step are the options of the command of the same name, with hyphens written as underscores, and they
+are given when the step is called. <code class="docutils literal notranslate"><span class="pre">help(builder.link_families)</span></code> lists them.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">builder</span><span class="o">.</span><span class="n">link_families</span><span class="p">(</span><span class="n">link_evalue</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">find_components</span><span class="p">(</span><span class="n">min_fraction</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A step that writes one output, which is called a stage, returns the path of that output. It keeps an output that was
+made from the same inputs and options. If the output was made from different ones, the call raises <code class="docutils literal notranslate"><span class="pre">FileExistsError</span></code>
+unless <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code>. With <code class="docutils literal notranslate"><span class="pre">dry_run=True</span></code> the stage prints what it would read and write, and whether the output is
+current, and writes nothing. A step raises an exception for an error and never exits the process. Values that do not
+make sense together raise <code class="docutils literal notranslate"><span class="pre">UsageError</span></code>, a subclass of <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+</section>
+<section id="the-dataset-settings">
+<h2>The dataset settings<a class="headerlink" href="#the-dataset-settings" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">DatasetBuilder.make_config</span></code> writes the settings of a dataset to <code class="docutils literal notranslate"><span class="pre">dataset/dataset-config.json</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">DatasetBuilder.config</span></code> reads them as a <code class="docutils literal notranslate"><span class="pre">DatasetConfig</span></code>. A change made with <code class="docutils literal notranslate"><span class="pre">set_params</span></code> is saved at once, so the
+commands use it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">builder</span><span class="o">.</span><span class="n">make_config</span><span class="p">([</span><span class="s1">'pretrain:rfam=data/structures/original'</span><span class="p">,</span>
+                     <span class="s1">'finetune:archiveii=data/archiveii/archiveii.parquet'</span><span class="p">])</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">config</span>
+<span class="n">config</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">stages__pretrain__ratios</span><span class="o">=</span><span class="s1">'90:5:5'</span><span class="p">,</span> <span class="n">filters__max_length</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Member</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">builder.make_config(sources,</span> <span class="pre">ratios=None,</span> <span class="pre">*,</span> <span class="pre">splits=None,</span> <span class="pre">filters=None,</span> <span class="pre">member_evalue=None,</span> <span class="pre">overwrite=False)</span></code></p></td>
+<td><p>Writes the config from a list of sources, each written <code class="docutils literal notranslate"><span class="pre">STAGE:NAME=PATH[,scan=PATH]</span></code> with any stage name, <code class="docutils literal notranslate"><span class="pre">splits</span></code> naming the splits and <code class="docutils literal notranslate"><span class="pre">ratios</span></code> giving each stage’s numbers as in <a class="reference internal" href="../cli/dataset/make-config.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">dataset</span> <span class="pre">make-config</span></code></span></a>. Raises <code class="docutils literal notranslate"><span class="pre">FileExistsError</span></code> if the config exists and <code class="docutils literal notranslate"><span class="pre">overwrite</span></code> is false, and <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if a source is not valid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">config.get_params()</span></code>, <code class="docutils literal notranslate"><span class="pre">config.set_params(**values)</span></code></p></td>
+<td><p>All settings in one dict with names such as <code class="docutils literal notranslate"><span class="pre">stages__pretrain__ratios</span></code> and <code class="docutils literal notranslate"><span class="pre">filters__max_length</span></code>, and a way to change them. A value is checked when it is set.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">config.splits</span></code>, <code class="docutils literal notranslate"><span class="pre">config.stage_names</span></code></p></td>
+<td><p>The names of the splits and of the stages.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">config.stages</span></code>, <code class="docutils literal notranslate"><span class="pre">config.stage(name)</span></code></p></td>
+<td><p>The ratios and sources of the stages.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">config.sources</span></code>, <code class="docutils literal notranslate"><span class="pre">config.ratios</span></code>, <code class="docutils literal notranslate"><span class="pre">config.filters</span></code>, <code class="docutils literal notranslate"><span class="pre">config.member_evalue</span></code></p></td>
+<td><p>The other settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">config.path</span></code></p></td>
+<td><p>The config file.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DatasetConfig.read(path)</span></code>, <code class="docutils literal notranslate"><span class="pre">config.write(path=None)</span></code></p></td>
+<td><p>Reads a config file, or the defaults if it does not exist, and writes one.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">DatasetBuilder('data',</span> <span class="pre">dataset_config='data/datasets/a/dataset-config.json')</span></code> uses another config file, for a second
+dataset in one data folder. Its assignment, manifest and rows are kept beside the file.</p>
+</section>
+<section id="the-built-dataset">
+<h2>The built dataset<a class="headerlink" href="#the-built-dataset" title="Link to this heading">#</a></h2>
+<p>These methods read what <code class="docutils literal notranslate"><span class="pre">build</span></code> wrote. They raise <code class="docutils literal notranslate"><span class="pre">FileNotFoundError</span></code> if nothing was built.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">builder</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">rows</span><span class="p">(</span><span class="s1">'pretrain'</span><span class="p">,</span> <span class="s1">'train'</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">rows</span><span class="p">(</span><span class="s1">'finetune'</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">'RF00005'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'sequence'</span><span class="p">,</span> <span class="s1">'structure'</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Member</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rows(stage,</span> <span class="pre">split=None,</span> <span class="pre">*,</span> <span class="pre">family=None,</span> <span class="pre">columns=None)</span></code></p></td>
+<td><p>Reads rows of a stage as a DataFrame, filtered by split and family before they are loaded. Raises <code class="docutils literal notranslate"><span class="pre">KeyError</span></code> if the dataset has no such stage or split.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">summary()</span></code></p></td>
+<td><p>A DataFrame of the number of rows in each stage and split.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">manifest</span></code></p></td>
+<td><p>The manifest of the build as a dict.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="the-family-graph">
+<h2>The family graph<a class="headerlink" href="#the-family-graph" title="Link to this heading">#</a></h2>
+<p>These methods read the graph that the dataset steps wrote. They do not run any step.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Member</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">family(family)</span></code></p></td>
+<td><p>Returns a dict with the family’s component, the families of that component, its split, and the links that leave and reach it. Raises <code class="docutils literal notranslate"><span class="pre">KeyError</span></code> if the family is not in the components table.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">links()</span></code></p></td>
+<td><p>Returns the links as a DataFrame.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">components()</span></code></p></td>
+<td><p>Returns each family with its component and the size of the component.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">assignment()</span></code></p></td>
+<td><p>Returns each unit with its name, component, split and the rows of each source.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">family_graph(min_fraction=0.2,</span> <span class="pre">link_evalue=None,</span> <span class="pre">*,</span> <span class="pre">min_sequences=None)</span></code></p></td>
+<td><p>Returns a <code class="docutils literal notranslate"><span class="pre">networkx.Graph</span></code> of the linked families, with the component and split of each as node attributes.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="messages">
+<h2>Messages<a class="headerlink" href="#messages" title="Link to this heading">#</a></h2>
+<p>Progress messages are sent to the <code class="docutils literal notranslate"><span class="pre">firna</span></code> logger, which writes to standard error. To send them
+elsewhere, pass <code class="docutils literal notranslate"><span class="pre">report</span></code> to the class or configure the logger with the <code class="docutils literal notranslate"><span class="pre">logging</span></code> module. The module
+<code class="docutils literal notranslate"><span class="pre">firna.logs</span></code> provides <code class="docutils literal notranslate"><span class="pre">configure(stream=None,</span> <span class="pre">level=logging.INFO)</span></code>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Python API</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="classes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Classes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-pipeline-class">Creating a pipeline class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structurebuilder">StructureBuilder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasetbuilder">DatasetBuilder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consensusbenchmark">ConsensusBenchmark</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dataset-settings">The dataset settings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-built-dataset">The built dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-family-graph">The family graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messages">Messages</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, FIRNA contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.2.0.
+  </p>
+</div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

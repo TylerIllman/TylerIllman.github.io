@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>firna benchmark compare &#8212; FIRNA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classes.css?v=4096f787" />
+    <link rel="stylesheet" type="text/css" href="../../_static/code-labels.css?v=73613e17" />
+    <link rel="stylesheet" type="text/css" href="../../_static/site.css?v=5f7028ef" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../_static/force-light.js?v=051bc122"></script>
+    <script src="../../_static/embed.js?v=064ed62a"></script>
+    <script src="../../_static/documentation_options.js?v=2caa9db7"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'cli/benchmark/compare';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="firna dataset make-seed-fasta" href="../dataset/make-seed-fasta.html" />
+    <link rel="prev" title="firna benchmark evaluate-consensus" href="evaluate-consensus.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.0" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+     
+  
+
+<a class="navbar-brand logo" href="/">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">FIRNA</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Command-line reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    Python API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/">
+    Home
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/builder">
+    Builder
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/families">
+    Families
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/datasets">
+    Datasets
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/about">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Command-line reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    Python API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/">
+    Home
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/builder">
+    Builder
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/families">
+    Families
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/datasets">
+    Datasets
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="/about">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Conventions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../stage-contract.html">Stage contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common-options.html">Common options</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">General commands</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../init-data-folder.html">firna init-data-folder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../show-layout.html">firna show-layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../download-data.html">firna download-data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scan-sequences.html">firna scan-sequences</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dataset</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../dataset/make-config.html">firna dataset make-config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/make-assignment.html">firna dataset make-assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/build.html">firna dataset build</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Structures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../structures/run-cacofold.html">firna structures run-cacofold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structures/extract.html">firna structures extract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structures/predict.html">firna structures predict</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Benchmark</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="make-set.html">firna benchmark make-set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluate-consensus.html">firna benchmark evaluate-consensus</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Internal</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">firna benchmark compare</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../dataset/make-seed-fasta.html">firna dataset make-seed-fasta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/link-families.html">firna dataset link-families</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/find-components.html">firna dataset find-components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/split-components.html">firna dataset split-components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structures/build-alignments.html">firna structures build-alignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="find-missing-residues.html">firna benchmark find-missing-residues</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Command-line reference</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">firna benchmark compare</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="firna-benchmark-compare">
+<h1>firna benchmark compare<a class="headerlink" href="#firna-benchmark-compare" title="Link to this heading">#</a></h1>
+<p>Show every structure for each hit of chosen families, laid onto its whole
+chain, with scores.</p>
+<section id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">firna</span> <span class="n">benchmark</span> <span class="n">compare</span> <span class="p">[</span><span class="o">--</span><span class="n">families</span> <span class="n">SELECTOR</span> <span class="o">...</span> <span class="o">|</span> <span class="o">--</span><span class="n">families</span><span class="o">-</span><span class="n">file</span> <span class="n">TABLE</span><span class="o">.</span><span class="n">csv</span> <span class="o">|</span> <span class="o">--</span><span class="n">hits</span> <span class="n">HITS</span><span class="o">.</span><span class="n">txt</span><span class="p">]</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
+<p>This internal command is for inspecting hits by eye, such as the families where a
+library structure scores better than Rfam’s. It reads a finished
+<a class="reference internal" href="evaluate-consensus.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">firna</span> <span class="pre">benchmark</span> <span class="pre">evaluate-consensus</span></code></span></a> run folder, the newest in <code class="docutils literal notranslate"><span class="pre">data/evaluations/</span></code> or the one given with
+<code class="docutils literal notranslate"><span class="pre">--evaluation-run</span></code>, so nothing is aligned or scored again: the blocks match the run’s comparison tables
+exactly, take its settings, and are written in seconds. Every structure of the run is laid onto each chosen hit and
+shown with its score against the known structure:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Structure</p></th>
+<th class="head"><p>Source</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cm</span></code></p></td>
+<td><p>The family CM’s own structure, which is also the structure of Rfam’s full alignment. It has no pseudoknots.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rfam_seed</span></code></p></td>
+<td><p>Rfam’s seed <code class="docutils literal notranslate"><span class="pre">SS_cons</span></code>, with its pseudoknots</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cacofold_&lt;name&gt;</span></code></p></td>
+<td><p>Each CaCoFold fold in the <a class="reference internal" href="../../guide/structure-library.html"><span class="std std-doc">structure library</span></a>, with its main structure and extra layers merged into one structure. Where layers clash, the pair with the lowest E-value in the fold’s <code class="docutils literal notranslate"><span class="pre">.cov</span></code> file wins, and crossing pairs are written as pseudoknot letters.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Any other name</p></td>
+<td><p>Each structure the run read from <code class="docutils literal notranslate"><span class="pre">--structure-dir</span></code>, under its own name, or each <code class="docutils literal notranslate"><span class="pre">--fold</span></code> method.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The selection options below narrow the run’s hits, and without any selection every evaluated family is
+used. The settings that decide which RNAs and hits were scored, and how, were given to <code class="docutils literal notranslate"><span class="pre">make-set</span></code> and
+<code class="docutils literal notranslate"><span class="pre">evaluate-consensus</span></code>, and are not given again here. Each result holds its RNA’s sequence, so a run made on another
+computer can be read anywhere.</p>
+<p>The output is in Stockholm format, with one block per hit, as in the per-sequence annotation files used for RNase P. Every line is laid onto the
+hit’s whole chain, in the chain’s own orientation, so a minus-strand hit is
+shown reversed back onto the chain.</p>
+<section id="choosing-hits">
+<h3>Choosing hits<a class="headerlink" href="#choosing-hits" title="Link to this heading">#</a></h3>
+<p>Hits are chosen by family, by individual hit, or both:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Selects</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--families</span></code></p></td>
+<td><p>Families, with the usual selectors</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--families-file</span> <span class="pre">PATH</span></code></p></td>
+<td><p>Families from a table with a <code class="docutils literal notranslate"><span class="pre">family</span></code> column, such as a comparison table filtered in a notebook and saved as CSV, or from a plain list of accessions</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--hits</span> <span class="pre">PATH</span></code></p></td>
+<td><p>Hits from a file, as below</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A hits file lists, for each family, the hits to compare. Each line holds a
+family accession followed by any number of hits, a family alone for all of
+its hits, or a hit alone for that hit in every chosen family. A hit is a
+chain, for all its hits (<code class="docutils literal notranslate"><span class="pre">9cfn_A</span></code>), or one hit (<code class="docutils literal notranslate"><span class="pre">7jju_A/2-51</span></code>). Text after
+<code class="docutils literal notranslate"><span class="pre">#</span></code> is ignored.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RF04326</span>  <span class="mi">7</span><span class="n">jju_A</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">51</span>  <span class="mi">9</span><span class="n">cfn_A</span>
+<span class="n">RF00437</span>  <span class="mi">9</span><span class="n">rw3_F</span><span class="o">/</span><span class="mi">6</span><span class="o">-</span><span class="mi">66</span>
+<span class="n">RF00001</span>                 <span class="c1"># every hit of this family</span>
+</pre></div>
+</div>
+<p>The file may instead be a CSV or tab-separated table with a <code class="docutils literal notranslate"><span class="pre">hit</span></code> column
+and, optionally, a <code class="docutils literal notranslate"><span class="pre">family</span></code> column; a row with a family and no hit selects
+all of that family’s hits. A family keeps only its listed hits when any hit
+is listed for it, and all its hits otherwise.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--only-improved</span></code> then keeps only the families in which a library
+structure’s mean MCC over the family’s hits, counting straddling pairs as
+missed, is higher than that of <code class="docutils literal notranslate"><span class="pre">--baseline</span></code>, which is <code class="docutils literal notranslate"><span class="pre">rfam_seed</span></code> by default, by
+more than <code class="docutils literal notranslate"><span class="pre">--min-gain</span></code>, as in the comparison tables. All of an improved family’s
+hits are shown, including those where the library structure does worse, and a
+family is left out even if single hits improve when its mean does not.</p>
+</section>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--families</span> <span class="pre">FAMILIES</span></code></p></td>
+<td><p></p></td>
+<td><p>accessions, all, ranges such as 30-3000, 30- or -30</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--families-file</span> <span class="pre">FAMILIES_FILE</span></code></p></td>
+<td><p></p></td>
+<td><p>table with a family column, or one accession per line</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--hits</span> <span class="pre">HITS</span></code></p></td>
+<td><p></p></td>
+<td><p>hits to compare: a table with family and hit columns, or lines such as RF04326 7jju_A/2-51, RF04326, or 7jju_A</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--only-improved</span></code></p></td>
+<td><p></p></td>
+<td><p>keep only families where a library structure’s mean MCC over the family’s hits beats –baseline, with all their hits</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--min-gain</span> <span class="pre">MIN_GAIN</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>with –only-improved, the margin in mean MCC a library structure must beat the baseline by (default: 0)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--baseline</span> <span class="pre">NAME</span></code></p></td>
+<td><p>rfam_seed</p></td>
+<td><p>with –only-improved, the structure to beat, by its name in the comparison tables (default: rfam_seed)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--evaluation-run</span> <span class="pre">RUN</span></code></p></td>
+<td><p></p></td>
+<td><p>the firna benchmark evaluate-consensus run folder whose hits, structures and scores are shown (default: the newest run in data/evaluations/)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--out</span> <span class="pre">OUT</span></code></p></td>
+<td><p></p></td>
+<td><p>write every hit to this one file (default: one file per family, &lt;run&gt;/&lt;family&gt;/&lt;family&gt;_eval_structures.sto in the evaluation run)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--list-families</span></code></p></td>
+<td><p></p></td>
+<td><p>print the selected families and exit</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--data-dir</span> <span class="pre">DIR</span></code></p></td>
+<td><p></p></td>
+<td><p>data folder used for every default path (default: $FIRNA_DATA, else ./data); paths given as options always win</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="output">
+<h2>Output<a class="headerlink" href="#output" title="Link to this heading">#</a></h2>
+<p>Without <code class="docutils literal notranslate"><span class="pre">--out</span></code>, each family’s hits are written to
+<code class="docutils literal notranslate"><span class="pre">&lt;run&gt;/&lt;family&gt;/&lt;family&gt;_eval_structures.sto</span></code> in the evaluation run. The
+files written are then listed in <code class="docutils literal notranslate"><span class="pre">eval_structures_files.txt</span></code>, in the run
+folder, with paths relative to that folder, so they
+can be copied from another computer with <code class="docutils literal notranslate"><span class="pre">rsync</span> <span class="pre">--files-from</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span>-avP<span class="w"> </span>--files-from<span class="o">=</span>eval_structures_files.txt<span class="w"> </span>user@host:/path/to/run/<span class="w"> </span>data/evaluations/run/
+<span class="sb">```</span><span class="w"> </span>With<span class="w"> </span><span class="sb">`</span>--out<span class="sb">`</span>,<span class="w"> </span>every
+hit<span class="w"> </span>goes<span class="w"> </span>to<span class="w"> </span>that<span class="w"> </span>one<span class="w"> </span>file.
+</pre></div>
+</div>
+</section>
+</section>
+<section id="stockholm-1-0">
+<h1>STOCKHOLM 1.0<a class="headerlink" href="#stockholm-1-0" title="Link to this heading">#</a></h1>
+<p>#=GF ID   9rw3_F/6-66
+#=GF CC   family RF00437
+#=GF CC   hit 6-66 + score=77.5 E=2.5e-15 window=10-57
+#=GF CC   known structure: secondary layer, from rna3db
+#=GF CC   straddling_pairs 0
+#=GF CC   MCC, this hit
+#=GF CC   structure           penal.  ignored
+#=GF CC   cm                  0.668   0.668
+#=GF CC   rfam_seed           0.668   0.668
+#=GF CC   cacofold_full       0.908   0.908
+#=GF CC   cacofold_seed       0.906   0.906
+#=GF CC   cacofold_seed_full  0.940   0.940</p>
+<p>9rw3_F/6-66                     UGCGCGUAGACAUUUCACAUCAUUCGCCGGGAUUGCGCAAAUGUUGCUUUGAAGUGUUGCAAACAU
+#=GC hit_region                 …..*************************************************************
+#=GC SS_cons_known_secondary    :::::::::&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;-&lt;&lt;&lt;&lt;-&lt;&lt;&lt;<strong><strong><strong>&gt;-&gt;&gt;-&gt;&gt;&gt;&gt;-&gt;&gt;—&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;:::::::::
+#=GC SS_cons_cm                 ::::::::::&lt;&lt;&lt;&lt;&lt;&lt;—-&lt;&lt;&lt;&lt;&lt;&lt;&lt;</strong></strong></strong><em>&gt;&gt;&gt;–&gt;&gt;&gt;&gt;——-&gt;&gt;&gt;&gt;&gt;&gt;::::::::::
+#=GC SS_cons_rfam_seed          ::::::::::&lt;&lt;&lt;&lt;&lt;&lt;—-&lt;&lt;&lt;&lt;&lt;&lt;&lt;</em><strong><strong><strong>&gt;&gt;&gt;–&gt;&gt;&gt;&gt;——-&gt;&gt;&gt;&gt;&gt;&gt;::::::::::
+#=GC SS_cons_cacofold_full      :::::&lt;&lt;&lt;&lt;-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;-&lt;&lt;</strong></strong></strong><em><strong>&gt;&gt;-&gt;&gt;&gt;&gt;&gt;&gt;&gt;—&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;::::::
+#=GC SS_cons_cacofold_seed      ::::::::&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;—&lt;&lt;&lt;&lt;-&lt;&lt;</strong></em><strong><strong><strong>&gt;&gt;-&gt;&gt;&gt;&gt;——&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;::::::::
+#=GC SS_cons_cacofold_seed_full ::::::::&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;-&lt;&lt;</strong></strong></strong>___&gt;&gt;-&gt;&gt;&gt;&gt;&gt;&gt;&gt;—&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;::::::::
+#=GF CC   best cacofold_seed_full (MCC 0.940)
+//</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+Each family's hits are preceded by a summary block of their own, with the
+ID `&lt;family&gt;_summary` and no sequence. It gives each
+structure's mean MCC over the family's hits shown, counting straddling pairs
+as missed (`penal.`) and ignoring them, its difference from `rfam_seed`, and
+the structure with the highest mean. A file written with `--out` begins with
+an overview block, with the ID `overview`, holding a table with one row per
+family that gives every structure's mean MCC and the best structure, so the
+families can be compared at a glance:
+
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h1>STOCKHOLM 1.0<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>#=GF ID   overview
+#=GF CC   OVERVIEW: mean MCC per family, straddling pairs penalised
+#=GF CC   family    hits  cm     rfam_seed  cacofold_full  cacofold_seed  cacofold_seed_full  best
+#=GF CC   RF00437   6     0.659  0.659      0.906          0.891          0.928               cacofold_seed_full
+#=GF CC   RF04326   4     0.330  0.470      0.735          0.754          0.754               cacofold_seed, cacofold_seed_full
+//</p>
+</section>
+<section id="id2">
+<h1>STOCKHOLM 1.0<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<p>#=GF ID   RF00437_summary
+#=GF CC   FAMILY SUMMARY RF00437: mean MCC over 6 hits
+#=GF CC   structure           penal.  ignored  vs rfam_seed
+#=GF CC   cm                  0.659   0.659    +0.000
+#=GF CC   rfam_seed           0.659   0.659    +0.000
+#=GF CC   cacofold_full       0.906   0.906    +0.247
+#=GF CC   cacofold_seed       0.891   0.891    +0.232
+#=GF CC   cacofold_seed_full  0.928   0.928    +0.269
+#=GF CC   best by mean MCC: cacofold_seed_full (0.928)
+//</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+The summary and overview blocks hold only `#=GF` lines, with no sequence.
+Programs that expect every Stockholm block to contain sequences may need to
+skip them.
+
+| Line | Content |
+|---|---|
+| `#=GF ID` | The chain and the hit's coordinates |
+| `#=GF CC hit` | Coordinates, strand, bit score, E-value and scoring window |
+| `#=GF CC` MCC table | One row per structure: its MCC on this hit, counting known pairs that straddle the hit as missed (`penal.`) and ignoring them. The family's means are in its summary block. See [Straddling pairs](evaluate.md#straddling-pairs). |
+| `#=GC hit_region` | `*` over the bases of the hit |
+| `#=GC SS_cons_known_&lt;layer&gt;` | The known structure of the whole chain |
+| `#=GC SS_cons_&lt;structure&gt;` | Each structure, laid onto the chain. Bases outside the hit are unpaired. |
+| `#=GF CC best` | The structure with the highest MCC, counting straddling pairs as missed, and any that tie with it |
+
+The scores use the union of each CaCoFold fold's layers, as in
+`firna benchmark evaluate-consensus`; the merged line shown can leave out a pair where two
+layers clash.
+
+## Examples
+
+```bash
+firna benchmark compare --families RF04326
+firna benchmark compare --families 437 1734 4326
+firna benchmark compare --families-file improved.csv --out improved.sto
+firna benchmark compare --hits chosen_hits.txt --out chosen.sto
+firna benchmark compare --families-file improved.csv --only-improved --min-gain 0.05 --out improved_hits.sto
+firna benchmark compare --evaluation-run data/evaluations/&lt;run&gt; --only-improved --min-gain 0.05 --out improved_hits.sto
+</pre></div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="evaluate-consensus.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">firna benchmark evaluate-consensus</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../dataset/make-seed-fasta.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">firna dataset make-seed-fasta</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">firna benchmark compare</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synopsis">Synopsis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-hits">Choosing hits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options">Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stockholm-1-0">STOCKHOLM 1.0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">STOCKHOLM 1.0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">STOCKHOLM 1.0</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, FIRNA contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.2.0.
+  </p>
+</div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

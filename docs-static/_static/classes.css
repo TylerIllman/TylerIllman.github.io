@@ -1,0 +1,2 @@
+/* The Classes page links to each class from its own tables, so the list that creates the class pages is not shown. */
+.generated-pages { display: none; }
